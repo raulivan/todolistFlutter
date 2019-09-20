@@ -107,8 +107,6 @@ class _HomeState extends State<Home> {
   }
 
   Widget construtorItens(context, index) {
-    //return ListTile(title: Text(_todoList[index]),);
-    //Permite deslizar o item
     return Dismissible(
       key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
       background: Container(
@@ -167,8 +165,8 @@ class _HomeState extends State<Home> {
   }
 
   Future<File> _getArquivo() async {
-    final diretorio = getApplicationDocumentsDirectory();
-    return new File('$diretorio/todo_db.json');
+    final diretorio = await getApplicationDocumentsDirectory();
+    return new File('${diretorio.path}/todo_db.json');
   }
 
   Future<File> _salvarArquivo() async {
@@ -185,4 +183,6 @@ class _HomeState extends State<Home> {
       return null;
     }
   }
+
+
 }
